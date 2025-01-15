@@ -1,35 +1,53 @@
-import React, { useState } from 'react'
-import "./PixelGrid.css"
+import React, { useState, useEffect } from "react";
+import "./PixelGrid.css";
 
-const PixelGrid : React.FC = () => {
+interface PixelGridProps {
+    rows: number;  
+    columns: number; 
+  }
 
-    const [pixels, setPixels] = useState(Array(256).fill("#fff"))
 
-    const handlePaint = (index : number, color : string) => {
-        const newPixels = [...pixels]
-        newPixels[index] = color
-        setPixels(newPixels)
-    }
 
-    const handleReset = () => {
-        setPixels(Array(256).fill("#fff"))
-    }
+const PixelGrid: React.FC<PixelGridProps> = ({ rows, columns}) => {
+
+    const totalPixels = rows * columns
+
+
+  const [pixels, setPixels] = useState(Array(totalPixels).fill("#fff"));
+
+  const handlePaint = (index: number, color: string) => {
+    const newPixels = [...pixels];
+    newPixels[index] = color;
+    setPixels(newPixels);
+  };
+
+  const handleReset = () => {
+    setPixels(Array(totalPixels).fill("#fff"));
+  };
+
+  useEffect(() => {
+    setPixels(Array(totalPixels).fill("#fff"));
+  }, [rows, columns, totalPixels]);
+
+
   return (
     <>
-    <div className='grid'>
+      <div className="grid" style={{
+        gridTemplateColumns: `repeat(${columns}, 30px)`,
+        gridTemplateRows: `repeat(${rows}, 30px)`
+      }}>
         {pixels.map((color, index) => (
-            
-            <div
-                key={index}
-                className="pixel"
-                style={{ backgroundColor : color}}
-                onClick={() => handlePaint(index, "#000")}
-            />
+          <div
+            key={index}
+            className="pixel"
+            style={{ backgroundColor: color }}
+            onClick={() => handlePaint(index, "#000")}
+          />
         ))}
-    </div>
-    <button onClick={() => handleReset()}>test</button>
+      </div>
+      <button onClick={() => handleReset()}>test</button>
     </>
-  )
-}
+  );
+};
 
-export default PixelGrid 
+export default PixelGrid;
