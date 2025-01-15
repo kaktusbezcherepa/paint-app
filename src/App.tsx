@@ -1,12 +1,13 @@
-
+import PixelGrid from './components/PixelGrid/PixelGrid'
 
 import './App.css'
 
-function App() {
+const App : React.FC = () => {
 
   return (
     <>
-      <h1>test</h1>
+    
+      <PixelGrid />
     </>
   )
 }
