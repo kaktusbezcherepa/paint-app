@@ -1,20 +1,25 @@
 import PixelGrid from './components/PixelGrid/PixelGrid'
-import GridControl from './components/GridControl/GridControl'
-import './App.css'
+import ControlPanel from './widget/ControlPanel'
 import { useState } from 'react'
+import './App.css'
+
 
 const App : React.FC = () => {
   const [rows, setRows] = useState(16)
   const [columns, setColumns] = useState(16)
+  const [currentColor, setCurrentColor] = useState('#000')
+
   return (
-    <>
-      <GridControl 
+    <>   
+      <PixelGrid currentColor={currentColor} rows={rows} columns={columns} />
+      <ControlPanel
+      currentColor={currentColor}
+      onColorChange={setCurrentColor} 
       rows={rows}
       columns={columns}
-      onRowsChange={setRows}
       onColumnsChange={setColumns}
+      onRowsChange={setRows}
       />
-      <PixelGrid rows={rows} columns={columns} />
     </>
   )
 }

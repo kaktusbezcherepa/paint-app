@@ -3,12 +3,13 @@ import "./PixelGrid.css";
 
 interface PixelGridProps {
     rows: number;  
-    columns: number; 
+    columns: number;
+    currentColor: string; 
   }
 
 
 
-const PixelGrid: React.FC<PixelGridProps> = ({ rows, columns}) => {
+const PixelGrid: React.FC<PixelGridProps> = ({ rows, columns, currentColor}) => {
 
     const totalPixels = rows * columns
 
@@ -41,7 +42,7 @@ const PixelGrid: React.FC<PixelGridProps> = ({ rows, columns}) => {
             key={index}
             className="pixel"
             style={{ backgroundColor: color }}
-            onClick={() => handlePaint(index, "#000")}
+            onClick={() => handlePaint(index, currentColor)}
           />
         ))}
       </div>

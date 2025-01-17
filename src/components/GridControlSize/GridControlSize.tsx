@@ -1,5 +1,5 @@
 import React from 'react'
-
+import "./GridControlSize.css"
 
 interface GridControlsProps {
     rows: number;
