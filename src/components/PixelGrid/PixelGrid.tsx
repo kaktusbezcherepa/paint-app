@@ -12,8 +12,9 @@ interface PixelGridProps {
 
 const PixelGrid: React.FC<PixelGridProps> = ({ rows, columns, currentColor, resetTrigger}) => {
 
-    const totalPixels = rows * columns
+  const totalPixels = rows * columns
 
+  const [isDrawing, setIsDrawing] = useState(false)
 
   const [pixels, setPixels] = useState(Array(totalPixels).fill("#fff"));
 
@@ -32,12 +33,22 @@ const PixelGrid: React.FC<PixelGridProps> = ({ rows, columns, currentColor, rese
 
   return (
     <>
-      <div className="grid" style={{
+      <div className="grid" 
+      onMouseDown={() => setIsDrawing(true)}
+      onMouseUp={() => setIsDrawing(false)}
+      onMouseLeave={() => setIsDrawing(false)}
+      
+      style={{
         gridTemplateColumns: `repeat(${columns}, 30px)`,
         gridTemplateRows: `repeat(${rows}, 30px)`
       }}>
         {pixels.map((color, index) => (
           <div
+            onMouseEnter={() => {
+              if(isDrawing) {
+                handlePaint(index, currentColor)
+              }
+            }}
             key={index}
             className="pixel"
             style={{ backgroundColor: color }}

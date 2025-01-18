@@ -1,0 +1,12 @@
+.controls {
+    display: flex;
+    flex-direction: column;
+}
+
+.controls input:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #bdbdbd;
+    outline: 0;
+    
+}

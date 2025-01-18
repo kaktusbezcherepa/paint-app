@@ -1,4 +1,5 @@
 import React from 'react'
+import "./ColorSelector.css"
 
 interface ColorSelectorProps {
     currentColor: string;
@@ -9,8 +10,11 @@ const ColorSelector: React.FC<ColorSelectorProps> = ({currentColor, onColorChang
 
 
   return (
-    <div>
-        <input type="color" value={currentColor} onChange={(e) => onColorChange(e.target.value)}/>
+    <div className='color__selector'>
+        <label>
+          Цвет: 
+          <input className='color__selector__input' type="color" value={currentColor} onChange={(e) => onColorChange(e.target.value)}/>
+        </label>
     </div>
   )
 }

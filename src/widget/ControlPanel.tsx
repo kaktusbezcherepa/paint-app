@@ -1,5 +1,5 @@
 import React from 'react'
-import GridControl from '../components/GridControlSize/GridControlSize'
+import GridControlSize from '../components/GridControlSize/GridControlSize'
 import ColorSelector from '../components/ColorSelector/ColorSelector';
 import ResetButton from '../ui/ResetButton';
 
@@ -25,7 +25,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
 
   return (
     <div>
-      <GridControl 
+      <GridControlSize 
       rows={rows}
       columns={columns}
       onRowsChange={onRowsChange}

@@ -1,7 +1,7 @@
 import React from 'react'
 import "./GridControlSize.css"
 
-interface GridControlsProps {
+interface GridControlsSizeProps {
     rows: number;
     columns: number;
     onRowsChange: (rows: number) => void;
@@ -9,7 +9,7 @@ interface GridControlsProps {
 }
 
 
-const GridControl: React.FC<GridControlsProps> = ({ rows, columns, onRowsChange, onColumnsChange }) => {
+const GridControlSize: React.FC<GridControlsSizeProps> = ({ rows, columns, onRowsChange, onColumnsChange }) => {
   return (
     <div className='controls'>
         <label>
@@ -34,4 +34,4 @@ const GridControl: React.FC<GridControlsProps> = ({ rows, columns, onRowsChange,
   )
 }
 
-export default GridControl
+export default GridControlSize

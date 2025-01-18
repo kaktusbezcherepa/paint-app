@@ -17,7 +17,7 @@ const App : React.FC = () => {
 
   
   return (
-    <>   
+    <div className='app__container'>   
       <PixelGrid
       resetTrigger={resetTrigger} 
       currentColor={currentColor} 
@@ -25,7 +25,7 @@ const App : React.FC = () => {
       columns={columns}
       
       />
-
+      <div className="control__panel__container">
       <ControlPanel
       onReset={handleReset}
       currentColor={currentColor}
@@ -35,7 +35,8 @@ const App : React.FC = () => {
       onColumnsChange={setColumns}
       onRowsChange={setRows}
       />
-    </>
+      </div>
+    </div>
   )
 }
 
