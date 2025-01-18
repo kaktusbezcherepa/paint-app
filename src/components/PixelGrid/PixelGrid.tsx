@@ -4,12 +4,13 @@ import "./PixelGrid.css";
 interface PixelGridProps {
     rows: number;  
     columns: number;
-    currentColor: string; 
-  }
+    currentColor: string;
+    resetTrigger: number;
+}
 
 
 
-const PixelGrid: React.FC<PixelGridProps> = ({ rows, columns, currentColor}) => {
+const PixelGrid: React.FC<PixelGridProps> = ({ rows, columns, currentColor, resetTrigger}) => {
 
     const totalPixels = rows * columns
 
@@ -22,13 +23,11 @@ const PixelGrid: React.FC<PixelGridProps> = ({ rows, columns, currentColor}) => 
     setPixels(newPixels);
   };
 
-  const handleReset = () => {
-    setPixels(Array(totalPixels).fill("#fff"));
-  };
+  
 
   useEffect(() => {
     setPixels(Array(totalPixels).fill("#fff"));
-  }, [rows, columns, totalPixels]);
+  }, [rows, columns, totalPixels, resetTrigger]);
 
 
   return (
@@ -46,7 +45,6 @@ const PixelGrid: React.FC<PixelGridProps> = ({ rows, columns, currentColor}) => 
           />
         ))}
       </div>
-      <button onClick={() => handleReset()}>test</button>
     </>
   );
 };

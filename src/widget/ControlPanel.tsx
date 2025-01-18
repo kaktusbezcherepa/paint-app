@@ -1,6 +1,7 @@
 import React from 'react'
 import GridControl from '../components/GridControlSize/GridControlSize'
 import ColorSelector from '../components/ColorSelector/ColorSelector';
+import ResetButton from '../ui/ResetButton';
 
 interface ControlPanelProps {
     currentColor: string;
@@ -9,6 +10,7 @@ interface ControlPanelProps {
     onRowsChange: (rows: number) => void;
     onColumnsChange: (columns: number) => void;
     onColorChange: (currentColor: string) => void;
+    onReset: () => void;
   }
 
 const ControlPanel: React.FC<ControlPanelProps> = ({ 
@@ -17,7 +19,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
     onColumnsChange, 
     onRowsChange,
     currentColor,
-    onColorChange
+    onColorChange,
+    onReset
 }) => {
 
   return (
@@ -29,6 +32,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
       onColumnsChange={onColumnsChange}
       />
       <ColorSelector  currentColor={currentColor} onColorChange={onColorChange}/>
+      <ResetButton onReset={onReset}/> 
     </div>
   )
 }
