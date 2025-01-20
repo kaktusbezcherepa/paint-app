@@ -37,13 +37,13 @@ const PixelGrid: React.FC<PixelGridProps> = ({ rows, columns, currentColor, rese
       onMouseDown={() => setIsDrawing(true)}
       onMouseUp={() => setIsDrawing(false)}
       onMouseLeave={() => setIsDrawing(false)}
-      
       style={{
         gridTemplateColumns: `repeat(${columns}, 30px)`,
         gridTemplateRows: `repeat(${rows}, 30px)`
       }}>
         {pixels.map((color, index) => (
           <div
+          
             onMouseEnter={() => {
               if(isDrawing) {
                 handlePaint(index, currentColor)

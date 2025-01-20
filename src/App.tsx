@@ -1,5 +1,5 @@
-import PixelGrid from './components/PixelGrid/PixelGrid'
-import ControlPanel from './widget/ControlPanel'
+import PixelGrid from './widget/PixelGrid/PixelGrid'
+import ControlPanel from './widget/ControlPanel/ControlPanel'
 import { useState } from 'react'
 import './App.css'
 
@@ -17,14 +17,16 @@ const App : React.FC = () => {
 
   
   return (
-    <div className='app__container'>   
-      <PixelGrid
+    <div className='app__container'>
+      <div className='test'>   
+      <PixelGrid 
       resetTrigger={resetTrigger} 
       currentColor={currentColor} 
       rows={rows} 
       columns={columns}
       
       />
+      </div>
       <div className="control__panel__container">
       <ControlPanel
       onReset={handleReset}

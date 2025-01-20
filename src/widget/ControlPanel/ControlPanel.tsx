@@ -1,7 +1,7 @@
-import React from 'react'
-import GridControlSize from '../components/GridControlSize/GridControlSize'
-import ColorSelector from '../components/ColorSelector/ColorSelector';
-import ResetButton from '../ui/ResetButton';
+import React, { useEffect } from 'react'
+import GridControlSize from '../../components/GridControlSize/GridControlSize'
+import ColorSelector from '../../components/ColorSelector/ColorSelector';
+import ResetButton from '../../ui/ResetButton';
 
 interface ControlPanelProps {
     currentColor: string;
@@ -22,6 +22,10 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
     onColorChange,
     onReset
 }) => {
+
+useEffect(() => {
+  console.log(rows)
+}, [rows])
 
   return (
     <div>
