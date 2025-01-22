@@ -43,7 +43,6 @@ const PixelGrid: React.FC<PixelGridProps> = ({ rows, columns, currentColor, rese
       }}>
         {pixels.map((color, index) => (
           <div
-          
             onMouseEnter={() => {
               if(isDrawing) {
                 handlePaint(index, currentColor)
