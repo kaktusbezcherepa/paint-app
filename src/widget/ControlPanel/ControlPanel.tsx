@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import GridControlSize from '../../components/GridControlSize/GridControlSize'
 import ColorSelector from '../../components/ColorSelector/ColorSelector';
-import ResetButton from '../../ui/ResetButton';
+import UniversalButton from '../../ui/UniversalButton';
 
 interface ControlPanelProps {
     currentColor: string;
@@ -11,6 +11,7 @@ interface ControlPanelProps {
     onColumnsChange: (columns: number) => void;
     onColorChange: (currentColor: string) => void;
     onReset: () => void;
+    closeModal: (value: boolean) => void;
   }
 
 const ControlPanel: React.FC<ControlPanelProps> = ({ 
@@ -20,7 +21,8 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
     onRowsChange,
     currentColor,
     onColorChange,
-    onReset
+    onReset,
+    closeModal
 }) => {
 
 useEffect(() => {
@@ -29,6 +31,7 @@ useEffect(() => {
 
   return (
     <div>
+      <UniversalButton onClose={() => closeModal(false)} buttonText='закрыть модалку'/> 
       <GridControlSize 
       rows={rows}
       columns={columns}
@@ -36,7 +39,7 @@ useEffect(() => {
       onColumnsChange={onColumnsChange}
       />
       <ColorSelector  currentColor={currentColor} onColorChange={onColorChange}/>
-      <ResetButton onReset={onReset}/> 
+      <UniversalButton onReset={onReset} buttonText='Сбросить рисунок'/> 
     </div>
   )
 }

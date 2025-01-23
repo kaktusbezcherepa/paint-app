@@ -1,53 +1,50 @@
-import { useEffect } from 'react';
-import { useState } from "react";
-import handleInput from '../../helpers/handleInput';
-import "./GridControlSize.css"
+import { useEffect } from "react";
+import useControlledInput from "../../hooks/useControlledInput";
+import "./GridControlSize.css";
 
 interface GridControlsSizeProps {
-    rows: number;
-    columns: number;
-    onRowsChange: (rows: number) => void;
-    onColumnsChange: (columns : number) => void;
+  rows: number;
+  columns: number;
+  onRowsChange: (rows: number) => void;
+  onColumnsChange: (columns: number) => void;
 }
 
-
-const GridControlSize: React.FC<GridControlsSizeProps> = ({ rows, columns, onRowsChange, onColumnsChange }) => {
-
-  const [inputRows, setInputRows] = useState(rows.toString())
-  const [inputColumns, setInputColumns] = useState(columns.toString())
-
-
-  useEffect(() => {
-    console.log(inputRows)
-  })
-
-  useEffect(() => {
-    setInputRows(rows.toString())
-  }, [rows])
-
-  useEffect(() => {
-    setInputColumns(columns.toString())
-  }, [columns])
+const GridControlSize: React.FC<GridControlsSizeProps> = ({
+  rows,
+  columns,
+  onRowsChange,
+  onColumnsChange,
+}) => {
+  
+  
+  const { value: inputRows, onChange: handleRowsChange } = useControlledInput(
+    rows.toString(),
+    onRowsChange
+  );
+  const { value: inputColumns, onChange: handleColumnsChange } =
+    useControlledInput(columns.toString(), onColumnsChange);
+  
+  
+    useEffect(() => {
+    console.log(inputRows);
+  });
 
   return (
-    <div className='controls'>
-        <label>
-            Размер Сетки
-            <input type='text'
-            value={inputRows}
-            onChange={(e) => handleInput(e.target.value, setInputRows, onRowsChange)}
-            />
-        </label>
-        <label>
-            Количество Колонок
-            <input type="text" 
-            value={inputColumns}
-            onChange={(e) => handleInput(e.target.value, setInputColumns, onColumnsChange)}
-
-            />
-        </label>
+    <div className="controls">
+      <label>
+        Размер Сетки
+        <input type="text" value={inputRows} onChange={handleRowsChange} />
+      </label>
+      <label>
+        Количество Колонок
+        <input
+          type="text"
+          value={inputColumns}
+          onChange={handleColumnsChange}
+        />
+      </label>
     </div>
-  )
-}
+  );
+};
 
-export default GridControlSize
+export default GridControlSize;
