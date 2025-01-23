@@ -17,6 +17,9 @@ const GridControlSize: React.FC<GridControlsSizeProps> = ({ rows, columns, onRow
   const [inputColumns, setInputColumns] = useState(columns.toString())
 
 
+  useEffect(() => {
+    console.log(inputRows)
+  })
 
   useEffect(() => {
     setInputRows(rows.toString())

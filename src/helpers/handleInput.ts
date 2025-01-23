@@ -13,6 +13,7 @@ const handleInput = (
 
   const clampedValue = Math.min(Math.max(numValue, 1), 30);
   parentSetter(clampedValue);
+  setter(clampedValue.toString())
 };
 
 export default handleInput
