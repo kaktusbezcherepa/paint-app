@@ -29,6 +29,8 @@ const PixelGrid: React.FC<PixelGridProps> = ({rows, columns, currentColor, reset
         setPixels(newPixels);
     };
 
+    console.log(isMobileOrTablet)
+    console.log(deviceDetector)
 
     useEffect(() => {
         setPixels(Array(totalPixels).fill("#fff"));
@@ -56,11 +58,24 @@ const PixelGrid: React.FC<PixelGridProps> = ({rows, columns, currentColor, reset
                  }}>
                 {pixels.map((color, index) => (
                     <div
-                        onMouseEnter={() => {
-                            if (isDrawing) {
+                    {...(isMobileOrTablet 
+                        ? {
+                            onTouchStart: (e) => {
+                                e.preventDefault()
                                 handlePaint(index, currentColor)
                             }
-                        }}
+                        }
+                        : 
+                        {
+                            onMouseEnter: (e) => {
+                                e.preventDefault()
+                                if (isDrawing) {
+                                    handlePaint(index, currentColor)
+                                }
+                            }
+                        }
+                    )}
+                        
                         key={index}
                         className="pixel"
                         style={{backgroundColor: color}}
