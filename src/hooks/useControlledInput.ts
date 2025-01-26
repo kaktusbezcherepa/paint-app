@@ -8,7 +8,9 @@ type UseControlledInputType = {
 
 const useControlledInput = (
     initialValue : string,
-    onValueChange: (value: number) => void
+    onValueChange: (value: number) => void,
+    min : number,
+    max : number
 ): UseControlledInputType => {
     
     
@@ -19,8 +21,8 @@ const useControlledInput = (
     }, [initialValue])
 
     const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        handleInput(e.target.value, setValue, onValueChange)
-    }, [onValueChange])
+        handleInput(e.target.value, setValue, onValueChange, min, max)
+    }, [onValueChange, min, max])
 
     return { value, onChange }
 }

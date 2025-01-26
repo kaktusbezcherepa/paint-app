@@ -19,10 +19,12 @@ const GridControlSize: React.FC<GridControlsSizeProps> = ({
   
   const { value: inputRows, onChange: handleRowsChange } = useControlledInput(
     rows.toString(),
-    onRowsChange
+    onRowsChange, 
+    1,
+    30
   );
   const { value: inputColumns, onChange: handleColumnsChange } =
-    useControlledInput(columns.toString(), onColumnsChange);
+    useControlledInput(columns.toString(), onColumnsChange, 1, 30);
   
   
     useEffect(() => {

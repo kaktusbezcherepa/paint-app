@@ -1,7 +1,9 @@
 const handleInput = (
   value: string,
   setter: (value: string) => void,
-  parentSetter: (value: number) => void
+  parentSetter: (value: number) => void,
+  min: number,
+  max: number,
 ) => {
   setter(value);
 
@@ -11,7 +13,7 @@ const handleInput = (
 
   if (isNaN(numValue)) return;
 
-  const clampedValue = Math.min(Math.max(numValue, 1), 30);
+  const clampedValue = Math.min(Math.max(numValue, min), max);
   parentSetter(clampedValue);
   setter(clampedValue.toString())
 };
