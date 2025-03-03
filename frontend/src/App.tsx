@@ -53,7 +53,7 @@ const App: React.FC = () => {
           <div className="modal__tools">
             <UniversalButton
               buttonText="open tools"
-              onClose={() => setIsOpenModalTools(true)}
+              onClick={() => setIsOpenModalTools(true)}
             />
           </div>
         )}

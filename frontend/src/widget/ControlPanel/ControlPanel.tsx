@@ -42,7 +42,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
   return (
     <div>
       <UniversalButton
-        onClose={() => actionsProps.closeModal(false)}
+        onClick={() => actionsProps.closeModal(false)}
         buttonText="закрыть модалку"
       />
       <GridControlSize
@@ -55,7 +55,7 @@ const ControlPanel: React.FC<ControlPanelProps> = ({
         currentColor={colorProps.currentColor}
         onColorChange={colorProps.onColorChange}
       />
-      <UniversalButton onReset={actionsProps.onReset} buttonText="Сбросить рисунок" />
+      <UniversalButton onClick={actionsProps.onReset} buttonText="Сбросить рисунок" />
       <PixelControlSize pixelSize={pixelProps.pixelSize} onPixelChangeSize={pixelProps.onPixelChange}/>
     </div>
   );

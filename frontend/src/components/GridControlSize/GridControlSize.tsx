@@ -1,3 +1,4 @@
+import React from "react";
 import useControlledInput from "../../hooks/useControlledInput";
 import "./GridControlSize.css";
 
@@ -14,21 +15,21 @@ const GridControlSize: React.FC<GridControlsSizeProps> = ({
   onRowsChange,
   onColumnsChange,
 }) => {
-  
-  
-  const { value: inputRows, onChange: handleRowsChange } = useControlledInput(
-    rows.toString(),
-    onRowsChange, 
-    1,
-    30
-  );
-  const { value: inputColumns, onChange: handleColumnsChange } =
-    useControlledInput(columns.toString(), onColumnsChange, 1, 30);
-  
-  
-  //   useEffect(() => {
-  //   console.log(inputRows);
-  // });
+  const { value: inputRows, onChange: handleRowsChange } = useControlledInput<number>({
+    initialValue: rows.toString(),
+    onValueChange: onRowsChange,
+    validationType: "number", 
+    min: 1,
+    max: 30,
+  });
+
+  const { value: inputColumns, onChange: handleColumnsChange } = useControlledInput<number>({
+    initialValue: columns.toString(),
+    onValueChange: onColumnsChange,
+    validationType: "number",
+    min: 1,
+    max: 30,
+  });
 
   return (
     <div className="controls">
@@ -38,11 +39,7 @@ const GridControlSize: React.FC<GridControlsSizeProps> = ({
       </label>
       <label>
         Количество Колонок
-        <input
-          type="number"
-          value={inputColumns}
-          onChange={handleColumnsChange}
-        />
+        <input type="number" value={inputColumns} onChange={handleColumnsChange} />
       </label>
     </div>
   );

@@ -1,15 +1,13 @@
 import React from 'react'
-import "./UniversalButton.css"
 
-interface UniversalButtonProps{
+interface UniversalButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
+  className?: string;
   buttonText : string;
-  onReset ?: () => void;
-  onClose ?: () => void
 }
 
-const UniversalButton: React.FC<UniversalButtonProps> = ({ onReset, buttonText, onClose }) => {
+const UniversalButton: React.FC<UniversalButtonProps> = ({ className ,buttonText, ...buttonProps}) => {
   return (
-    <button className='reset__button' onClick={onReset || onClose}>
+    <button className={className} {...buttonProps}>
       {buttonText}
     </button>
   )
