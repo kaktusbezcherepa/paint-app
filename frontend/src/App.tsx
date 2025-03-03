@@ -18,12 +18,6 @@ const App: React.FC = () => {
 
   return (
     <div className="app__container">
-      {/* <PixelGrid
-        resetTrigger={resetTrigger}
-        currentColor={currentColor}
-        rows={rows}
-        columns={columns}
-      /> */}
       <PixelGridCanvas
         resetTrigger={resetTrigger}
         currentColor={currentColor}

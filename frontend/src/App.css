@@ -1,19 +1,18 @@
 .app__container {
+    position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     min-height: 100vh;
 }
 
 .control__panel__container {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     outline: 3px solid black;
     border-radius: 3px;
     padding: 10px;
-    left: 80%;
     height: 200px;
 }
 

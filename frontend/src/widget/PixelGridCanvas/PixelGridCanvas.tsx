@@ -18,7 +18,7 @@ const PixelGridCanvas: React.FC<PixelGridCanvasProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isDrawing, setIsDrawing] = useState(false);
-  const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
+  // const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
 
   const clearCanvas = () => {
     const canvas = canvasRef.current;

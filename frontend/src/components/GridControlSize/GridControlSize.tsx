@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import useControlledInput from "../../hooks/useControlledInput";
 import "./GridControlSize.css";
 
@@ -27,20 +26,20 @@ const GridControlSize: React.FC<GridControlsSizeProps> = ({
     useControlledInput(columns.toString(), onColumnsChange, 1, 30);
   
   
-    useEffect(() => {
-    console.log(inputRows);
-  });
+  //   useEffect(() => {
+  //   console.log(inputRows);
+  // });
 
   return (
     <div className="controls">
       <label>
         Размер Сетки
-        <input type="text" value={inputRows} onChange={handleRowsChange} />
+        <input type="number" value={inputRows} onChange={handleRowsChange} />
       </label>
       <label>
         Количество Колонок
         <input
-          type="text"
+          type="number"
           value={inputColumns}
           onChange={handleColumnsChange}
         />
