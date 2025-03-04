@@ -8,7 +8,14 @@ interface PixelControlSizeProps {
 
 const PixelControlSize: React.FC<PixelControlSizeProps> = ({ pixelSize, onPixelChangeSize}) => {
 
-    const { value, onChange } = useControlledInput(pixelSize.toString(), onPixelChangeSize, 10, 50)
+    const { value, onChange } = useControlledInput({
+      initialValue: pixelSize.toString(),
+      onValueChange: onPixelChangeSize,
+      validationType: "number",
+      min: 1,
+      max: 30
+    }
+    )
 
   return (
     <div>
